@@ -1,0 +1,11 @@
+**/node_modules 
+**/npm-debug.log
+**/obj
+**/secrets.dev.yaml
+**/values.dev.yaml
+*.zip
+env
+pip3
+migrations
+__pycache__
+README.md

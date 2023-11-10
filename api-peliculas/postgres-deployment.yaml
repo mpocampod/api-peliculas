@@ -2,9 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: postgres-peliculas-v1
-  labels:
-    app: postgres-peliculas
-    version: "1.0"
 spec:
   replicas: 1
   selector:
@@ -14,11 +11,18 @@ spec:
     metadata:
       labels:
         app: postgres-peliculas
-        version: "1.0"
     spec:
       containers:
-      - name: postgres-peliculas
-        image: postgres:latest
-        ports:
-        - name: http-server
-          containerPort: 5432
+        - name: postgres-peliculas-v1
+          image: postgres:latest
+          ports:
+            - containerPort: 5432  
+          env:
+            - name: POSTGRES_HOST
+              value: suleiman.db.elephantsql.com
+            - name: POSTGRES_DB
+              value: koalvwnd
+            - name: POSTGRES_USER
+              value: koalvwnd
+            - name: POSTGRES_PASSWORD
+              value: clSZeSvtDEcrT-u5iq1qInt_L-2892zn

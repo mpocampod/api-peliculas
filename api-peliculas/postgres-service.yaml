@@ -1,13 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: postgress-peliculas-v1
-  labels:
-    app: postgress-peliculas
+  name: postgres-peliculas-v1
 spec:
-  ports:
-  - port: 3000
-    targetPort: http-server
-  selector:
-    app: postgress-peliculas
   type: ClusterIP
+  ports:
+  - port: 5432
+  selector:
+    app: postgres-peliculas
+
+

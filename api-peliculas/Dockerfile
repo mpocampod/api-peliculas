@@ -1,16 +1,16 @@
-FROM python:3.9.12-slim
-
+FROM debian:bullseye-slim
 RUN mkdir /api-peliculas
 
 WORKDIR /api-peliculas
 
-RUN apt-get update 
-RUN apt-get install -y curl 
-
+RUN apt-get update && \
+    apt-get install -y curl python3-pip && \
+    rm -rf /var/lib/apt/lists/*
 
 COPY . /api-peliculas/
 
-RUN pip3 install -r /api-peliculas/requirements.txt
+RUN pip3 install --upgrade pip && \
+    pip3 install -r requirements.txt
 
 ENV FLASK_APP "entrypoint:app"
 ENV FLASK_ENV "development"
